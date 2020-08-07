@@ -10,7 +10,7 @@ class Company(models.Model):
     city = models.CharField(max_length=20)
     country = models.CharField(max_length=20)
     email = models.EmailField(max_length=254, null=True)
-    phone = models.CharField(max_length=15)
+    phone = models.CharField(max_length=15, null=True)
 
     def __str__(self):
         return self.name
@@ -25,3 +25,6 @@ class Employee(models.Model):
     last_name = models.CharField(max_length=20)
 
     company = models.OneToOneField(Company, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.first_name.join(self.last_name)
