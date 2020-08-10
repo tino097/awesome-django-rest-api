@@ -13,7 +13,7 @@ class Company(models.Model):
     phone = models.CharField(max_length=15, null=True)
 
     def __str__(self):
-        return self.name
+        return '%s' % self.name
 
 
 class Employee(models.Model):
@@ -27,4 +27,4 @@ class Employee(models.Model):
     company = models.OneToOneField(Company, on_delete=models.CASCADE)
 
     def __str__(self):
-        return self.first_name.join(self.last_name)
+        return '%s, %s' % (self.last_name, self.first_name)
